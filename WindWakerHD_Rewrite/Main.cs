@@ -15,7 +15,7 @@ namespace WindWakerHD_Rewrite
 {
     public partial class Main : Form
     {
-        private protected string version = "1.2.1";
+        private protected string version = "1.0.0";
         private const uint CodeHandlerStart = 0x01133000;
         private const uint CodeHandlerEnd = 0x01134300;
         private const uint CodeHandlerEnabled = 0x10014CFC;
