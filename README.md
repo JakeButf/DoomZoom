@@ -1,2 +1,2 @@
-# WindWakerHDTrainer
-A game trainer for "The Legend of Zelda: The Wind Waker HD"
+# DoomZoom Trainer
+A fork of [Dekirais trainer](https://github.com/Dekirai/WindWakerHDTrainer).
