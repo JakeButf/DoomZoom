@@ -194,6 +194,10 @@ namespace WindWakerHD_Rewrite
                     getmap.Add(0x47616e6f);
                     getmap.Add(0x6e4A0000);
                     break;
+                case "GanonK":
+                    getmap.Add(0x47616E6F);
+                    getmap.Add(0x6E4B0000);
+                    break;
                 case "GanonL":
                     getmap.Add(0x47616e6f);
                     getmap.Add(0x6e4C0000);

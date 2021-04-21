@@ -141,7 +141,6 @@
             this.textBox_watch_address = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox_watch_name = new System.Windows.Forms.TextBox();
-            this.panel_watches = new System.Windows.Forms.Panel();
             this.button_memfile_export = new System.Windows.Forms.Button();
             this.checkBox_memfile_controls = new System.Windows.Forms.CheckBox();
             this.button_mem_load = new System.Windows.Forms.Button();
@@ -225,14 +224,27 @@
             this.panel_itemmods = new System.Windows.Forms.Panel();
             this.panel_coordinates = new System.Windows.Forms.Panel();
             this.panel_stageload = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.panel_memfile = new System.Windows.Forms.Panel();
             this.panel_watchesmaster = new System.Windows.Forms.Panel();
             this.panel_debug = new System.Windows.Forms.Panel();
             this.panel_credits = new System.Windows.Forms.Panel();
+            this.textBox_coordinates_x = new System.Windows.Forms.TextBox();
+            this.textBox_coordinates_y = new System.Windows.Forms.TextBox();
+            this.textBox_coordinates_z = new System.Windows.Forms.TextBox();
+            this.textBox_coordinates_angle = new System.Windows.Forms.TextBox();
+            this.button_coordinates_teleport = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button_coordinates_loadCurrentCoords = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.cheatTab.SuspendLayout();
             this.itemspoofPage.SuspendLayout();
-            this.coordinatesPage.SuspendLayout();
             this.stageloaderPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentheartsBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxbombsBox)).BeginInit();
@@ -257,6 +269,9 @@
             this.panel_watchesmaster.SuspendLayout();
             this.panel_debug.SuspendLayout();
             this.panel_credits.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -557,13 +572,6 @@
             // coordinatesPage
             // 
             this.coordinatesPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.coordinatesPage.Controls.Add(this.linkspeed);
-            this.coordinatesPage.Controls.Add(this.boatz);
-            this.coordinatesPage.Controls.Add(this.boaty);
-            this.coordinatesPage.Controls.Add(this.boatx);
-            this.coordinatesPage.Controls.Add(this.linkz);
-            this.coordinatesPage.Controls.Add(this.linky);
-            this.coordinatesPage.Controls.Add(this.linkx);
             this.coordinatesPage.Location = new System.Drawing.Point(4, 40);
             this.coordinatesPage.Name = "coordinatesPage";
             this.coordinatesPage.Size = new System.Drawing.Size(680, 289);
@@ -573,7 +581,8 @@
             // linkspeed
             // 
             this.linkspeed.AutoSize = true;
-            this.linkspeed.Location = new System.Drawing.Point(43, 146);
+            this.linkspeed.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.linkspeed.Location = new System.Drawing.Point(50, 165);
             this.linkspeed.Name = "linkspeed";
             this.linkspeed.Size = new System.Drawing.Size(0, 13);
             this.linkspeed.TabIndex = 46;
@@ -581,7 +590,8 @@
             // boatz
             // 
             this.boatz.AutoSize = true;
-            this.boatz.Location = new System.Drawing.Point(45, 58);
+            this.boatz.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.boatz.Location = new System.Drawing.Point(50, 77);
             this.boatz.Name = "boatz";
             this.boatz.Size = new System.Drawing.Size(0, 13);
             this.boatz.TabIndex = 40;
@@ -589,7 +599,8 @@
             // boaty
             // 
             this.boaty.AutoSize = true;
-            this.boaty.Location = new System.Drawing.Point(45, 45);
+            this.boaty.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.boaty.Location = new System.Drawing.Point(50, 64);
             this.boaty.Name = "boaty";
             this.boaty.Size = new System.Drawing.Size(0, 13);
             this.boaty.TabIndex = 39;
@@ -597,7 +608,8 @@
             // boatx
             // 
             this.boatx.AutoSize = true;
-            this.boatx.Location = new System.Drawing.Point(45, 32);
+            this.boatx.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.boatx.Location = new System.Drawing.Point(50, 51);
             this.boatx.Name = "boatx";
             this.boatx.Size = new System.Drawing.Size(0, 13);
             this.boatx.TabIndex = 38;
@@ -605,7 +617,8 @@
             // linkz
             // 
             this.linkz.AutoSize = true;
-            this.linkz.Location = new System.Drawing.Point(43, 133);
+            this.linkz.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.linkz.Location = new System.Drawing.Point(50, 152);
             this.linkz.Name = "linkz";
             this.linkz.Size = new System.Drawing.Size(0, 13);
             this.linkz.TabIndex = 37;
@@ -613,7 +626,8 @@
             // linky
             // 
             this.linky.AutoSize = true;
-            this.linky.Location = new System.Drawing.Point(43, 120);
+            this.linky.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.linky.Location = new System.Drawing.Point(50, 139);
             this.linky.Name = "linky";
             this.linky.Size = new System.Drawing.Size(0, 13);
             this.linky.TabIndex = 36;
@@ -621,7 +635,8 @@
             // linkx
             // 
             this.linkx.AutoSize = true;
-            this.linkx.Location = new System.Drawing.Point(43, 107);
+            this.linkx.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.linkx.Location = new System.Drawing.Point(54, 126);
             this.linkx.Name = "linkx";
             this.linkx.Size = new System.Drawing.Size(0, 13);
             this.linkx.TabIndex = 35;
@@ -1240,7 +1255,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label20.Location = new System.Drawing.Point(2, 165);
+            this.label20.Location = new System.Drawing.Point(7, 165);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(41, 13);
             this.label20.TabIndex = 45;
@@ -1248,7 +1263,8 @@
             // 
             // storeposition
             // 
-            this.storeposition.Location = new System.Drawing.Point(438, 121);
+            this.storeposition.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.storeposition.Location = new System.Drawing.Point(23, 22);
             this.storeposition.Name = "storeposition";
             this.storeposition.Size = new System.Drawing.Size(156, 23);
             this.storeposition.TabIndex = 44;
@@ -1258,7 +1274,8 @@
             // 
             // linkteleport
             // 
-            this.linkteleport.Location = new System.Drawing.Point(438, 147);
+            this.linkteleport.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.linkteleport.Location = new System.Drawing.Point(23, 48);
             this.linkteleport.Name = "linkteleport";
             this.linkteleport.Size = new System.Drawing.Size(156, 23);
             this.linkteleport.TabIndex = 42;
@@ -1270,7 +1287,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label22.Location = new System.Drawing.Point(3, 77);
+            this.label22.Location = new System.Drawing.Point(8, 77);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(42, 13);
             this.label22.TabIndex = 34;
@@ -1280,7 +1297,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label21.Location = new System.Drawing.Point(3, 64);
+            this.label21.Location = new System.Drawing.Point(8, 64);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(42, 13);
             this.label21.TabIndex = 33;
@@ -1290,7 +1307,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label19.Location = new System.Drawing.Point(3, 51);
+            this.label19.Location = new System.Drawing.Point(8, 51);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(42, 13);
             this.label19.TabIndex = 32;
@@ -1300,7 +1317,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label18.Location = new System.Drawing.Point(3, 152);
+            this.label18.Location = new System.Drawing.Point(8, 152);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(40, 13);
             this.label18.TabIndex = 31;
@@ -1310,7 +1327,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label17.Location = new System.Drawing.Point(3, 139);
+            this.label17.Location = new System.Drawing.Point(8, 139);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(40, 13);
             this.label17.TabIndex = 30;
@@ -1320,7 +1337,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label16.Location = new System.Drawing.Point(3, 126);
+            this.label16.Location = new System.Drawing.Point(8, 126);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(40, 13);
             this.label16.TabIndex = 29;
@@ -1330,7 +1347,7 @@
             // 
             this.readcoordinates.AutoSize = true;
             this.readcoordinates.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.readcoordinates.Location = new System.Drawing.Point(3, 18);
+            this.readcoordinates.Location = new System.Drawing.Point(8, 18);
             this.readcoordinates.Name = "readcoordinates";
             this.readcoordinates.Size = new System.Drawing.Size(86, 17);
             this.readcoordinates.TabIndex = 28;
@@ -1342,7 +1359,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label9.Location = new System.Drawing.Point(459, 29);
+            this.label9.Location = new System.Drawing.Point(42, 16);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(114, 13);
             this.label9.TabIndex = 27;
@@ -1350,7 +1367,8 @@
             // 
             // boatteleport
             // 
-            this.boatteleport.Location = new System.Drawing.Point(438, 72);
+            this.boatteleport.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.boatteleport.Location = new System.Drawing.Point(21, 59);
             this.boatteleport.Name = "boatteleport";
             this.boatteleport.Size = new System.Drawing.Size(156, 23);
             this.boatteleport.TabIndex = 26;
@@ -1412,7 +1430,7 @@
             "Bird\'s Peak Rock (G5)",
             "Cliff Plateu Isles (G6)",
             "Five-Star Isles (G7)"});
-            this.boatcoordinatesList.Location = new System.Drawing.Point(438, 45);
+            this.boatcoordinatesList.Location = new System.Drawing.Point(21, 32);
             this.boatcoordinatesList.Name = "boatcoordinatesList";
             this.boatcoordinatesList.Size = new System.Drawing.Size(156, 21);
             this.boatcoordinatesList.TabIndex = 25;
@@ -1420,7 +1438,8 @@
             // readrealmap
             // 
             this.readrealmap.AutoSize = true;
-            this.readrealmap.Location = new System.Drawing.Point(323, 20);
+            this.readrealmap.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.readrealmap.Location = new System.Drawing.Point(323, 17);
             this.readrealmap.Name = "readrealmap";
             this.readrealmap.Size = new System.Drawing.Size(0, 13);
             this.readrealmap.TabIndex = 44;
@@ -1428,6 +1447,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label26.Location = new System.Drawing.Point(298, 15);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(19, 13);
@@ -1617,7 +1637,7 @@
             // 
             this.loadmap.Location = new System.Drawing.Point(184, 129);
             this.loadmap.Name = "loadmap";
-            this.loadmap.Size = new System.Drawing.Size(633, 73);
+            this.loadmap.Size = new System.Drawing.Size(310, 73);
             this.loadmap.TabIndex = 25;
             this.loadmap.Text = "Load Map";
             this.loadmap.UseVisualStyleBackColor = true;
@@ -1705,15 +1725,6 @@
             this.textBox_watch_name.Name = "textBox_watch_name";
             this.textBox_watch_name.Size = new System.Drawing.Size(133, 20);
             this.textBox_watch_name.TabIndex = 0;
-            // 
-            // panel_watches
-            // 
-            this.panel_watches.AutoScroll = true;
-            this.panel_watches.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.panel_watches.Location = new System.Drawing.Point(5, 2);
-            this.panel_watches.Name = "panel_watches";
-            this.panel_watches.Size = new System.Drawing.Size(510, 202);
-            this.panel_watches.TabIndex = 0;
             // 
             // button_memfile_export
             // 
@@ -2277,7 +2288,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(699, 256);
+            this.pictureBox1.Location = new System.Drawing.Point(708, 248);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(372, 75);
             this.pictureBox1.TabIndex = 25;
@@ -2538,26 +2549,17 @@
             // 
             // panel_coordinates
             // 
-            this.panel_coordinates.Controls.Add(this.boatcoordinatesList);
-            this.panel_coordinates.Controls.Add(this.label20);
-            this.panel_coordinates.Controls.Add(this.boatteleport);
-            this.panel_coordinates.Controls.Add(this.storeposition);
-            this.panel_coordinates.Controls.Add(this.label9);
-            this.panel_coordinates.Controls.Add(this.linkteleport);
-            this.panel_coordinates.Controls.Add(this.readcoordinates);
-            this.panel_coordinates.Controls.Add(this.label16);
-            this.panel_coordinates.Controls.Add(this.label17);
-            this.panel_coordinates.Controls.Add(this.label18);
-            this.panel_coordinates.Controls.Add(this.label19);
-            this.panel_coordinates.Controls.Add(this.label21);
-            this.panel_coordinates.Controls.Add(this.label22);
-            this.panel_coordinates.Location = new System.Drawing.Point(1055, 9);
+            this.panel_coordinates.Controls.Add(this.groupBox7);
+            this.panel_coordinates.Controls.Add(this.groupBox6);
+            this.panel_coordinates.Controls.Add(this.groupBox5);
+            this.panel_coordinates.Location = new System.Drawing.Point(797, 536);
             this.panel_coordinates.Name = "panel_coordinates";
             this.panel_coordinates.Size = new System.Drawing.Size(1018, 207);
             this.panel_coordinates.TabIndex = 41;
             // 
             // panel_stageload
             // 
+            this.panel_stageload.Controls.Add(this.button9);
             this.panel_stageload.Controls.Add(this.readrealmap);
             this.panel_stageload.Controls.Add(this.loadmap);
             this.panel_stageload.Controls.Add(this.label26);
@@ -2573,6 +2575,17 @@
             this.panel_stageload.Size = new System.Drawing.Size(1018, 207);
             this.panel_stageload.TabIndex = 42;
             // 
+            // button9
+            // 
+            this.button9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button9.Location = new System.Drawing.Point(497, 129);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(310, 73);
+            this.button9.TabIndex = 45;
+            this.button9.Text = "Stage Reload";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            // 
             // panel_memfile
             // 
             this.panel_memfile.Controls.Add(this.button_memfile_export);
@@ -2583,16 +2596,30 @@
             this.panel_memfile.Controls.Add(this.label32);
             this.panel_memfile.Controls.Add(this.label_memfile_stage);
             this.panel_memfile.Controls.Add(this.button_memfile_load);
-            this.panel_memfile.Location = new System.Drawing.Point(1036, 10);
+            this.panel_memfile.Location = new System.Drawing.Point(1535, 256);
             this.panel_memfile.Name = "panel_memfile";
             this.panel_memfile.Size = new System.Drawing.Size(1018, 206);
             this.panel_memfile.TabIndex = 43;
             // 
             // panel_watchesmaster
             // 
+            this.panel_watchesmaster.Controls.Add(this.linkx);
             this.panel_watchesmaster.Controls.Add(this.watch_groupBox);
-            this.panel_watchesmaster.Controls.Add(this.panel_watches);
-            this.panel_watchesmaster.Location = new System.Drawing.Point(1026, 1);
+            this.panel_watchesmaster.Controls.Add(this.linky);
+            this.panel_watchesmaster.Controls.Add(this.readcoordinates);
+            this.panel_watchesmaster.Controls.Add(this.linkz);
+            this.panel_watchesmaster.Controls.Add(this.label22);
+            this.panel_watchesmaster.Controls.Add(this.boatx);
+            this.panel_watchesmaster.Controls.Add(this.label21);
+            this.panel_watchesmaster.Controls.Add(this.boaty);
+            this.panel_watchesmaster.Controls.Add(this.label19);
+            this.panel_watchesmaster.Controls.Add(this.boatz);
+            this.panel_watchesmaster.Controls.Add(this.label18);
+            this.panel_watchesmaster.Controls.Add(this.linkspeed);
+            this.panel_watchesmaster.Controls.Add(this.label17);
+            this.panel_watchesmaster.Controls.Add(this.label16);
+            this.panel_watchesmaster.Controls.Add(this.label20);
+            this.panel_watchesmaster.Location = new System.Drawing.Point(10, 323);
             this.panel_watchesmaster.Name = "panel_watchesmaster";
             this.panel_watchesmaster.Size = new System.Drawing.Size(1018, 207);
             this.panel_watchesmaster.TabIndex = 44;
@@ -2601,7 +2628,7 @@
             // 
             this.panel_debug.Controls.Add(this.groupBox3);
             this.panel_debug.Controls.Add(this.groupBox2);
-            this.panel_debug.Location = new System.Drawing.Point(1093, 605);
+            this.panel_debug.Location = new System.Drawing.Point(1083, 758);
             this.panel_debug.Name = "panel_debug";
             this.panel_debug.Size = new System.Drawing.Size(1018, 207);
             this.panel_debug.TabIndex = 45;
@@ -2622,12 +2649,143 @@
             this.panel_credits.Size = new System.Drawing.Size(1018, 206);
             this.panel_credits.TabIndex = 46;
             // 
+            // textBox_coordinates_x
+            // 
+            this.textBox_coordinates_x.Location = new System.Drawing.Point(64, 19);
+            this.textBox_coordinates_x.Name = "textBox_coordinates_x";
+            this.textBox_coordinates_x.Size = new System.Drawing.Size(78, 20);
+            this.textBox_coordinates_x.TabIndex = 46;
+            // 
+            // textBox_coordinates_y
+            // 
+            this.textBox_coordinates_y.Location = new System.Drawing.Point(64, 45);
+            this.textBox_coordinates_y.Name = "textBox_coordinates_y";
+            this.textBox_coordinates_y.Size = new System.Drawing.Size(78, 20);
+            this.textBox_coordinates_y.TabIndex = 47;
+            // 
+            // textBox_coordinates_z
+            // 
+            this.textBox_coordinates_z.Location = new System.Drawing.Point(64, 71);
+            this.textBox_coordinates_z.Name = "textBox_coordinates_z";
+            this.textBox_coordinates_z.Size = new System.Drawing.Size(78, 20);
+            this.textBox_coordinates_z.TabIndex = 48;
+            // 
+            // textBox_coordinates_angle
+            // 
+            this.textBox_coordinates_angle.Location = new System.Drawing.Point(64, 97);
+            this.textBox_coordinates_angle.Name = "textBox_coordinates_angle";
+            this.textBox_coordinates_angle.Size = new System.Drawing.Size(78, 20);
+            this.textBox_coordinates_angle.TabIndex = 49;
+            // 
+            // button_coordinates_teleport
+            // 
+            this.button_coordinates_teleport.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_coordinates_teleport.Location = new System.Drawing.Point(22, 159);
+            this.button_coordinates_teleport.Name = "button_coordinates_teleport";
+            this.button_coordinates_teleport.Size = new System.Drawing.Size(156, 35);
+            this.button_coordinates_teleport.TabIndex = 50;
+            this.button_coordinates_teleport.Text = "Teleport";
+            this.button_coordinates_teleport.UseVisualStyleBackColor = true;
+            this.button_coordinates_teleport.Click += new System.EventHandler(this.button_coordinates_teleport_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.button_coordinates_loadCurrentCoords);
+            this.groupBox5.Controls.Add(this.label38);
+            this.groupBox5.Controls.Add(this.label37);
+            this.groupBox5.Controls.Add(this.label36);
+            this.groupBox5.Controls.Add(this.label35);
+            this.groupBox5.Controls.Add(this.textBox_coordinates_x);
+            this.groupBox5.Controls.Add(this.button_coordinates_teleport);
+            this.groupBox5.Controls.Add(this.textBox_coordinates_y);
+            this.groupBox5.Controls.Add(this.textBox_coordinates_angle);
+            this.groupBox5.Controls.Add(this.textBox_coordinates_z);
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox5.Location = new System.Drawing.Point(302, 3);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(200, 201);
+            this.groupBox5.TabIndex = 51;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Manual Teleport";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(44, 22);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(14, 13);
+            this.label35.TabIndex = 51;
+            this.label35.Text = "X";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(44, 48);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(14, 13);
+            this.label36.TabIndex = 52;
+            this.label36.Text = "Y";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(44, 74);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(14, 13);
+            this.label37.TabIndex = 53;
+            this.label37.Text = "Z";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(24, 100);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(34, 13);
+            this.label38.TabIndex = 54;
+            this.label38.Text = "Angle";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.linkteleport);
+            this.groupBox6.Controls.Add(this.storeposition);
+            this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox6.Location = new System.Drawing.Point(515, 3);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(204, 87);
+            this.groupBox6.TabIndex = 52;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Store / Reload Position";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label9);
+            this.groupBox7.Controls.Add(this.boatteleport);
+            this.groupBox7.Controls.Add(this.boatcoordinatesList);
+            this.groupBox7.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox7.Location = new System.Drawing.Point(515, 103);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(204, 100);
+            this.groupBox7.TabIndex = 53;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Boat Teleport";
+            // 
+            // button_coordinates_loadCurrentCoords
+            // 
+            this.button_coordinates_loadCurrentCoords.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_coordinates_loadCurrentCoords.Location = new System.Drawing.Point(22, 122);
+            this.button_coordinates_loadCurrentCoords.Name = "button_coordinates_loadCurrentCoords";
+            this.button_coordinates_loadCurrentCoords.Size = new System.Drawing.Size(156, 35);
+            this.button_coordinates_loadCurrentCoords.TabIndex = 55;
+            this.button_coordinates_loadCurrentCoords.Text = "Load Current Coords";
+            this.button_coordinates_loadCurrentCoords.UseVisualStyleBackColor = true;
+            this.button_coordinates_loadCurrentCoords.Click += new System.EventHandler(this.button_coordinates_loadCurrentCoords_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(19)))));
-            this.ClientSize = new System.Drawing.Size(1017, 330);
+            this.ClientSize = new System.Drawing.Size(1016, 323);
             this.Controls.Add(this.panel_credits);
             this.Controls.Add(this.panel_debug);
             this.Controls.Add(this.panel_watchesmaster);
@@ -2661,7 +2819,7 @@
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DoomZoom Trainer v.1.0.0 Public Beta";
+            this.Text = "DoomZoom Trainer v.1.1.0 Public Beta";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox1.ResumeLayout(false);
@@ -2669,8 +2827,6 @@
             this.cheatTab.ResumeLayout(false);
             this.itemspoofPage.ResumeLayout(false);
             this.itemspoofPage.PerformLayout();
-            this.coordinatesPage.ResumeLayout(false);
-            this.coordinatesPage.PerformLayout();
             this.stageloaderPage.ResumeLayout(false);
             this.stageloaderPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentheartsBox)).EndInit();
@@ -2701,15 +2857,20 @@
             this.panel_itemmods.ResumeLayout(false);
             this.panel_itemmods.PerformLayout();
             this.panel_coordinates.ResumeLayout(false);
-            this.panel_coordinates.PerformLayout();
             this.panel_stageload.ResumeLayout(false);
             this.panel_stageload.PerformLayout();
             this.panel_memfile.ResumeLayout(false);
             this.panel_memfile.PerformLayout();
             this.panel_watchesmaster.ResumeLayout(false);
+            this.panel_watchesmaster.PerformLayout();
             this.panel_debug.ResumeLayout(false);
             this.panel_credits.ResumeLayout(false);
             this.panel_credits.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2863,7 +3024,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Timer watchestimer;
-        private System.Windows.Forms.Panel panel_watches;
         private System.Windows.Forms.GroupBox watch_groupBox;
         private System.Windows.Forms.Button button_watch_add;
         private System.Windows.Forms.Label label15;
@@ -2916,6 +3076,20 @@
         private System.Windows.Forms.Panel panel_watchesmaster;
         private System.Windows.Forms.Panel panel_debug;
         private System.Windows.Forms.Panel panel_credits;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox textBox_coordinates_x;
+        private System.Windows.Forms.Button button_coordinates_teleport;
+        private System.Windows.Forms.TextBox textBox_coordinates_y;
+        private System.Windows.Forms.TextBox textBox_coordinates_angle;
+        private System.Windows.Forms.TextBox textBox_coordinates_z;
+        private System.Windows.Forms.Button button_coordinates_loadCurrentCoords;
     }
 }
 

@@ -15,7 +15,7 @@ namespace WindWakerHD_Rewrite
 {
     public partial class Main : Form
     {
-        private protected string version = "1.0.0";
+        private protected string version = "1.1.0";
         private const uint CodeHandlerStart = 0x01133000;
         private const uint CodeHandlerEnd = 0x01134300;
         private const uint CodeHandlerEnabled = 0x10014CFC;
@@ -38,6 +38,17 @@ namespace WindWakerHD_Rewrite
             maxmagicBox.SelectedIndex = 0;
 
             //this.BackColor = Color.FromArgb(255, 15, 16, 19);
+            panel_gecko.Enabled = false;
+            panel_link.Enabled = false;
+            panel_spoof.Enabled = false;
+            panel_inventory.Enabled = false;
+            panel_itemmods.Enabled = false;
+            panel_coordinates.Enabled = false;
+            panel_stageload.Enabled = false;
+            panel_memfile.Enabled = false;
+            panel_watchesmaster.Enabled = false;
+            panel_debug.Enabled = false;
+            panel_credits.Enabled = false;
             //Assign Panel Location
             panel_gecko.Location = new Point(-1, 43);
             panel_link.Location = new Point(-1, 43);
@@ -47,7 +58,7 @@ namespace WindWakerHD_Rewrite
             panel_coordinates.Location = new Point(-1, 43);
             panel_stageload.Location = new Point(-1, 43);
             panel_memfile.Location = new Point(-1, 43);
-            panel_watches.Location = new Point(-1, 43);
+            panel_watchesmaster.Location = new Point(-1, 43);
             panel_debug.Location = new Point(-1, 43);
             panel_credits.Location = new Point(-1, 43);
 
@@ -61,7 +72,7 @@ namespace WindWakerHD_Rewrite
             panel_coordinates.Hide();
             panel_stageload.Hide();
             panel_memfile.Hide();
-            panel_watches.Hide();
+            panel_watchesmaster.Hide();
             panel_debug.Hide();
             panel_credits.Hide();
         }
@@ -77,7 +88,7 @@ namespace WindWakerHD_Rewrite
             panel_coordinates.Hide();
             panel_stageload.Hide();
             panel_memfile.Hide();
-            panel_watches.Hide();
+            panel_watchesmaster.Hide();
             panel_debug.Hide();
             panel_credits.Hide();
         }
@@ -151,12 +162,13 @@ namespace WindWakerHD_Rewrite
             ResetButtonColors();
             panel_memfile.Show();
             button_memfiles.ForeColor = Color.Red;
+            maptimer.Start();
         }
         private void button_watches_Click(object sender, EventArgs e)
         {
             HideAllPanels();
             ResetButtonColors();
-            panel_watches.Show();
+            panel_watchesmaster.Show();
             button_watches.ForeColor = Color.Red;
         }
         private void button_debug_Click(object sender, EventArgs e)
@@ -193,6 +205,18 @@ namespace WindWakerHD_Rewrite
                         wiiuconnect.Text = "Disconnect";
                         cheatTab.Enabled = true;
                         inputtimer.Start();
+
+                        panel_gecko.Enabled = true;
+                        panel_link.Enabled = true;
+                        panel_spoof.Enabled = true;
+                        panel_inventory.Enabled = true;
+                        panel_itemmods.Enabled = true;
+                        panel_coordinates.Enabled = true;
+                        panel_stageload.Enabled = true;
+                        panel_memfile.Enabled = true;
+                        panel_watchesmaster.Enabled = true;
+                        panel_debug.Enabled = true;
+                        panel_credits.Enabled = true;
                     }
                 }
                 else
@@ -407,6 +431,12 @@ namespace WindWakerHD_Rewrite
             Gecko.poke08(0x109763FA, Convert.ToByte(roomid.Value)); //Room ID
             Gecko.poke08(0x109763FB, Convert.ToByte(layerid.Value)); //Layer ID
             Gecko.poke08(0x109763FC, 0x01); //Reload Stage
+        }
+
+        //Reload Stage
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            Gecko.poke08(0x109763FC, 0x01);
         }
         #endregion
 
@@ -673,6 +703,40 @@ namespace WindWakerHD_Rewrite
             }
         }
 
+        private void button_coordinates_teleport_Click(object sender, EventArgs e)
+        {
+            float LinkX = float.Parse(textBox_coordinates_x.Text.ToString());
+            float LinkY = float.Parse(textBox_coordinates_y.Text.ToString());
+            float LinkZ = float.Parse(textBox_coordinates_z.Text.ToString());
+
+            byte[] linkxbytes = BitConverter.GetBytes(LinkX);
+            byte[] linkybytes = BitConverter.GetBytes(LinkY);
+            byte[] linkzbytes = BitConverter.GetBytes(LinkZ);
+
+            Gecko.poke32(0x1096EF48, BitConverter.ToUInt32(linkxbytes, 0));
+            Gecko.poke32(0x1096EF4C, BitConverter.ToUInt32(linkybytes, 0));
+            Gecko.poke32(0x1096EF50, BitConverter.ToUInt32(linkzbytes, 0));
+            Gecko.poke32(0x1096EF10, Convert.ToUInt32(textBox_coordinates_angle.Text));
+        }
+
+        private void button_coordinates_loadCurrentCoords_Click(object sender, EventArgs e)
+        {
+            byte[] linkxbytes = BitConverter.GetBytes(Gecko.peek(0x1096EF48));
+            byte[] linkybytes = BitConverter.GetBytes(Gecko.peek(0x1096EF4C));
+            byte[] linkzbytes = BitConverter.GetBytes(Gecko.peek(0x1096EF50));
+            //byte[] linkanglebytes = BitConverter.GetBytes();
+
+            float LinkX = BitConverter.ToSingle(linkxbytes, 0);
+            float LinkY = BitConverter.ToSingle(linkybytes, 0);
+            float LinkZ = BitConverter.ToSingle(linkzbytes, 0);
+            //float LinkAngle = BitConverter.ToSingle(linkanglebytes, 0);
+
+            textBox_coordinates_x.Text = LinkX.ToString();
+            textBox_coordinates_y.Text = LinkY.ToString();
+            textBox_coordinates_z.Text = LinkZ.ToString();
+            textBox_coordinates_angle.Text = Convert.ToUInt32(Gecko.peek(0x1096EF10)).ToString();
+        }
+
         private void linkteleport_Click(object sender, EventArgs e)
         {
             uint collision = 0x00000000;
@@ -846,6 +910,10 @@ namespace WindWakerHD_Rewrite
         private uint savedRoom;
         private uint savedSpawn;
         private uint finalHealth;
+        private uint finalMagic;
+        private uint finalRupees;
+        private uint finalArrows;
+        private uint finalBombs;
         private bool memfileDpadControls;
 
         private string folderPath;
@@ -878,8 +946,10 @@ namespace WindWakerHD_Rewrite
             //COORDS
             
             finalHealth = returnHealth();
-
-            
+            finalMagic = Gecko.peek(0x15073694);
+            finalRupees = Gecko.peek(0x15073684);
+            finalArrows = Gecko.peek(0x150736E9);
+            finalBombs = Gecko.peek(0x150736EA);      
         }
         private void button_memfile_export_Click(object sender, EventArgs e)
         {
@@ -900,6 +970,10 @@ namespace WindWakerHD_Rewrite
                     writer.WriteLine(coordfacing);
 
                     writer.WriteLine(returnHealth());
+                    writer.WriteLine(finalMagic);
+                    writer.WriteLine(finalRupees);
+                    writer.WriteLine(finalArrows);
+                    writer.WriteLine(finalBombs);
 
                     writer.Close();
                     writer.Dispose();
@@ -926,7 +1000,10 @@ namespace WindWakerHD_Rewrite
                 coordz = Convert.ToUInt32(lines[6]);
                 coordfacing = Convert.ToUInt32(lines[7]);
                 finalHealth = Convert.ToUInt32(lines[8]);
-
+                finalMagic = Convert.ToUInt32(lines[9]);
+                finalRupees = Convert.ToUInt32(lines[10]);
+                finalArrows = Convert.ToUInt32(lines[11]);
+                finalBombs = Convert.ToUInt32(lines[12]);
                 textBox_memfile_name.Text = System.IO.Path.GetFileNameWithoutExtension(memfile_open_ofd.FileName);
             }      
         }
@@ -940,6 +1017,24 @@ namespace WindWakerHD_Rewrite
         {
             if (validateMap(savedMap))
             {
+                LoadHealth();
+                Gecko.poke32(0x15073694, finalMagic);
+                Gecko.poke32(0x15073684, finalRupees);
+                Gecko.poke32(0x150736E9, finalArrows);
+                Gecko.poke32(0x150736EA, finalBombs);
+                if(savedMap == "M_NewD2" || savedMap == "kindan" || savedMap == "Siren" || savedMap == "M_Dai" || savedMap == "kaze") //if in dungeon, load test room first to prevent teleporting to entrance
+                {
+                    Console.WriteLine("Saved in dungeon");
+                    Gecko.poke32(0x109763F0, 0x00000000); //Clearing Stage name to prevent Crash
+                    Gecko.poke32(0x109763F4, 0x00000000); //Clearing Stage name to prevent Crash
+                    Gecko.poke32(0x109763F0, 0x4533524F);
+                    Gecko.poke32(0x109763F4, 0x4F500000);
+                    Console.WriteLine(finalRoom + "Final Room");
+                    Gecko.poke08(0x109763F9, 0); //Spawn ID
+                    Gecko.poke08(0x109763FA, 0); //Room ID
+                    Gecko.poke08(0x109763FB, 0); //Layer ID
+                    Gecko.poke08(0x109763FC, 0x01); //Reload Stage
+                }
                 var readmap = await Map.SetMap(savedMap);
                 Gecko.poke32(0x109763F0, 0x00000000); //Clearing Stage name to prevent Crash
                 Gecko.poke32(0x109763F4, 0x00000000); //Clearing Stage name to prevent Crash
@@ -953,7 +1048,6 @@ namespace WindWakerHD_Rewrite
                 Thread.Sleep(3500);
                 //TP TO COORDS
                 LoadCoords();
-                LoadHealth();
             }
             else
             {
@@ -1056,7 +1150,7 @@ namespace WindWakerHD_Rewrite
 
         private void AddWatch(String name, uint address)
         {
-            watchestimer.Stop();
+            /*watchestimer.Stop();
             foreach (Control c in panel_watches.Controls)
             {
                 panel_watches.Controls.Remove(c);
@@ -1064,12 +1158,12 @@ namespace WindWakerHD_Rewrite
             watchLabels.Add(name);
             watchList.Add(address);
             UpdateWatchLabels();
-            watchestimer.Start();
+            watchestimer.Start();*/
         }
 
         private void UpdateWatchLabels()
         {
-            watchestimer.Interval = 500;
+            /*watchestimer.Interval = 500;
             watchValues.Clear();
             labelList.Clear();
             //valueLabel.Clear();
@@ -1108,7 +1202,7 @@ namespace WindWakerHD_Rewrite
             {
                 s.Text = "";
             }
-            watchestimer.Start();
+            watchestimer.Start();*/
         }
         #endregion
 
@@ -1148,25 +1242,25 @@ namespace WindWakerHD_Rewrite
         {
             try
             {
-                String result;
-                result = Gecko.peek(Convert.ToUInt32(textBox_debug_peek_memAdd.Text, 16)).ToString();
+                uint result;
+                result = Gecko.peek(Convert.ToUInt32(textBox_debug_peek_memAdd.Text, 16));
                 switch (comboBox_debug_peek.SelectedIndex)
                 {
                     case 0:
-                        result = Convert.ToUInt32(result).ToString();
+                        result = Convert.ToUInt32(result);
                         break;
                     case 1:
-                        result = Convert.ToUInt16(result).ToString();
+                        result = Convert.ToUInt16(result);
                         break;
                     case 2:
-                        result = Convert.ToUInt32(result).ToString();
+                        result = Convert.ToUInt32(result);
                         break;
                     default:
-                        result = "";
+                        result = 0;
                         break;
                 }
                 
-                MessageBox.Show(result, textBox_debug_peek_memAdd.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("0x" + Convert.ToString(result, 16), textBox_debug_peek_memAdd.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             } catch(Exception ex)
             {
                 MessageBox.Show(e.ToString(), "Error Report", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1174,13 +1268,22 @@ namespace WindWakerHD_Rewrite
             
         }
 
+
         #endregion
 
         #region Global Input Update
         bool dpaddown;
+        UInt32 color = 0;
         GameInput gameInput = new GameInput();
         private async void inputtimer_Tick(object sender, EventArgs e)
         {
+            //Watermark
+            color += 10000;
+            if(color == 2147483646)
+            {
+                color = 0;
+            }
+            Gecko.poke32(0x26917418, color);
             if(dpaddown)
             {
                 if(gameInput.IsDpadDownDown(Gecko))
