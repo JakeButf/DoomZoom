@@ -15,7 +15,7 @@ namespace WindWakerHD_Rewrite
 {
     public partial class Main : Form
     {
-        private protected string version = "1.1.0";
+        private protected string version = "1.1.1";
         private const uint CodeHandlerStart = 0x01133000;
         private const uint CodeHandlerEnd = 0x01134300;
         private const uint CodeHandlerEnabled = 0x10014CFC;
@@ -939,10 +939,8 @@ namespace WindWakerHD_Rewrite
             coordfacing = Gecko.peek(0x1096EF10);
        
             maptimer.Stop();
-            /*finalRoom = returnRoom();
+            finalRoom = returnRoom();
             finalSpawn = returnSpawn();
-            Console.WriteLine(returnHealth());
-            Console.WriteLine(finalSpawn + "Spawn");*/
             //COORDS
             
             finalHealth = returnHealth();
