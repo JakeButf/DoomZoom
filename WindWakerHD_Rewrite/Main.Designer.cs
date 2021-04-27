@@ -219,9 +219,14 @@
             this.button_stageload = new System.Windows.Forms.Button();
             this.panel_gecko = new System.Windows.Forms.Panel();
             this.panel_link = new System.Windows.Forms.Panel();
+            this.checkBox_link_invis = new System.Windows.Forms.CheckBox();
             this.panel_spoof = new System.Windows.Forms.Panel();
             this.panel_inventory = new System.Windows.Forms.Panel();
             this.panel_itemmods = new System.Windows.Forms.Panel();
+            this.button_storage_doorcancel = new System.Windows.Forms.Button();
+            this.button_storage_chest = new System.Windows.Forms.Button();
+            this.button_storage_cancelstorage = new System.Windows.Forms.Button();
+            this.button_storage_givestorage = new System.Windows.Forms.Button();
             this.panel_coordinates = new System.Windows.Forms.Panel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -240,6 +245,8 @@
             this.button9 = new System.Windows.Forms.Button();
             this.panel_memfile = new System.Windows.Forms.Panel();
             this.panel_watchesmaster = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.linkSpeedAngleLabel = new System.Windows.Forms.Label();
             this.panel_debug = new System.Windows.Forms.Panel();
             this.panel_credits = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
@@ -501,7 +508,7 @@
             this.cheatTab.Enabled = false;
             this.cheatTab.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cheatTab.HotTrack = true;
-            this.cheatTab.Location = new System.Drawing.Point(1036, 269);
+            this.cheatTab.Location = new System.Drawing.Point(2112, 536);
             this.cheatTab.Multiline = true;
             this.cheatTab.Name = "cheatTab";
             this.cheatTab.SelectedIndex = 0;
@@ -1165,7 +1172,7 @@
             this.boomerangThrow.AutoSize = true;
             this.boomerangThrow.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boomerangThrow.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.boomerangThrow.Location = new System.Drawing.Point(13, 165);
+            this.boomerangThrow.Location = new System.Drawing.Point(372, 152);
             this.boomerangThrow.Name = "boomerangThrow";
             this.boomerangThrow.Size = new System.Drawing.Size(146, 17);
             this.boomerangThrow.TabIndex = 31;
@@ -1178,7 +1185,7 @@
             this.hookshotRange.AutoSize = true;
             this.hookshotRange.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hookshotRange.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.hookshotRange.Location = new System.Drawing.Point(13, 119);
+            this.hookshotRange.Location = new System.Drawing.Point(372, 106);
             this.hookshotRange.Name = "hookshotRange";
             this.hookshotRange.Size = new System.Drawing.Size(142, 17);
             this.hookshotRange.TabIndex = 29;
@@ -1191,7 +1198,7 @@
             this.hookshotSpeed.AutoSize = true;
             this.hookshotSpeed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hookshotSpeed.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.hookshotSpeed.Location = new System.Drawing.Point(13, 96);
+            this.hookshotSpeed.Location = new System.Drawing.Point(372, 83);
             this.hookshotSpeed.Name = "hookshotSpeed";
             this.hookshotSpeed.Size = new System.Drawing.Size(159, 17);
             this.hookshotSpeed.TabIndex = 28;
@@ -1204,7 +1211,7 @@
             this.bowSpeed.AutoSize = true;
             this.bowSpeed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bowSpeed.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.bowSpeed.Location = new System.Drawing.Point(13, 73);
+            this.bowSpeed.Location = new System.Drawing.Point(372, 60);
             this.bowSpeed.Name = "bowSpeed";
             this.bowSpeed.Size = new System.Drawing.Size(130, 17);
             this.bowSpeed.TabIndex = 30;
@@ -1217,7 +1224,7 @@
             this.bombRadius.AutoSize = true;
             this.bombRadius.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bombRadius.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.bombRadius.Location = new System.Drawing.Point(13, 27);
+            this.bombRadius.Location = new System.Drawing.Point(372, 14);
             this.bombRadius.Name = "bombRadius";
             this.bombRadius.Size = new System.Drawing.Size(155, 17);
             this.bombRadius.TabIndex = 27;
@@ -1230,7 +1237,7 @@
             this.bowRadius.AutoSize = true;
             this.bowRadius.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bowRadius.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.bowRadius.Location = new System.Drawing.Point(13, 50);
+            this.bowRadius.Location = new System.Drawing.Point(372, 37);
             this.bowRadius.Name = "bowRadius";
             this.bowRadius.Size = new System.Drawing.Size(148, 17);
             this.bowRadius.TabIndex = 25;
@@ -1243,7 +1250,7 @@
             this.boomerangRange.AutoSize = true;
             this.boomerangRange.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boomerangRange.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.boomerangRange.Location = new System.Drawing.Point(13, 142);
+            this.boomerangRange.Location = new System.Drawing.Point(372, 129);
             this.boomerangRange.Name = "boomerangRange";
             this.boomerangRange.Size = new System.Drawing.Size(150, 17);
             this.boomerangRange.TabIndex = 26;
@@ -1681,6 +1688,7 @@
             this.watch_groupBox.TabIndex = 1;
             this.watch_groupBox.TabStop = false;
             this.watch_groupBox.Text = "Add Watches";
+            this.watch_groupBox.Visible = false;
             // 
             // button_watch_add
             // 
@@ -2274,7 +2282,7 @@
             // 
             this.label_connection.AutoSize = true;
             this.label_connection.ForeColor = System.Drawing.Color.Red;
-            this.label_connection.Location = new System.Drawing.Point(12, 309);
+            this.label_connection.Location = new System.Drawing.Point(12, 307);
             this.label_connection.Name = "label_connection";
             this.label_connection.Size = new System.Drawing.Size(82, 13);
             this.label_connection.TabIndex = 26;
@@ -2369,7 +2377,7 @@
             this.button_itemmods.Name = "button_itemmods";
             this.button_itemmods.Size = new System.Drawing.Size(94, 43);
             this.button_itemmods.TabIndex = 30;
-            this.button_itemmods.Text = "Item Mods";
+            this.button_itemmods.Text = "Storage";
             this.button_itemmods.UseVisualStyleBackColor = false;
             this.button_itemmods.Click += new System.EventHandler(this.button_itemmods_Click);
             // 
@@ -2483,11 +2491,19 @@
             // 
             // panel_link
             // 
+            this.panel_link.Controls.Add(this.checkBox_link_invis);
+            this.panel_link.Controls.Add(this.boomerangThrow);
             this.panel_link.Controls.Add(this.linkmod_binddpaddown);
+            this.panel_link.Controls.Add(this.bombRadius);
+            this.panel_link.Controls.Add(this.hookshotRange);
             this.panel_link.Controls.Add(this.setcurrenthearts);
+            this.panel_link.Controls.Add(this.boomerangRange);
             this.panel_link.Controls.Add(this.label25);
+            this.panel_link.Controls.Add(this.hookshotSpeed);
             this.panel_link.Controls.Add(this.maxmagicBox);
+            this.panel_link.Controls.Add(this.bowRadius);
             this.panel_link.Controls.Add(this.currentheartsBox);
+            this.panel_link.Controls.Add(this.bowSpeed);
             this.panel_link.Controls.Add(this.setarrows);
             this.panel_link.Controls.Add(this.setmagic);
             this.panel_link.Controls.Add(this.label13);
@@ -2499,10 +2515,22 @@
             this.panel_link.Controls.Add(this.maxheartsBox);
             this.panel_link.Controls.Add(this.sethearts);
             this.panel_link.Controls.Add(this.setbombs);
-            this.panel_link.Location = new System.Drawing.Point(1023, 43);
+            this.panel_link.Location = new System.Drawing.Point(1036, 610);
             this.panel_link.Name = "panel_link";
             this.panel_link.Size = new System.Drawing.Size(1018, 207);
             this.panel_link.TabIndex = 38;
+            // 
+            // checkBox_link_invis
+            // 
+            this.checkBox_link_invis.AutoSize = true;
+            this.checkBox_link_invis.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.checkBox_link_invis.Location = new System.Drawing.Point(22, 161);
+            this.checkBox_link_invis.Name = "checkBox_link_invis";
+            this.checkBox_link_invis.Size = new System.Drawing.Size(87, 17);
+            this.checkBox_link_invis.TabIndex = 41;
+            this.checkBox_link_invis.Text = "Invisible Link";
+            this.checkBox_link_invis.UseVisualStyleBackColor = true;
+            this.checkBox_link_invis.CheckedChanged += new System.EventHandler(this.checkBox_link_invis_CheckedChanged);
             // 
             // panel_spoof
             // 
@@ -2528,31 +2556,70 @@
             this.panel_inventory.Controls.Add(this.bottle2);
             this.panel_inventory.Controls.Add(this.bottle1);
             this.panel_inventory.Controls.Add(this.bottleitem);
-            this.panel_inventory.Location = new System.Drawing.Point(1023, 43);
+            this.panel_inventory.Location = new System.Drawing.Point(1058, 355);
             this.panel_inventory.Name = "panel_inventory";
             this.panel_inventory.Size = new System.Drawing.Size(1018, 207);
             this.panel_inventory.TabIndex = 39;
             // 
             // panel_itemmods
             // 
-            this.panel_itemmods.Controls.Add(this.boomerangThrow);
-            this.panel_itemmods.Controls.Add(this.bombRadius);
-            this.panel_itemmods.Controls.Add(this.hookshotRange);
-            this.panel_itemmods.Controls.Add(this.boomerangRange);
-            this.panel_itemmods.Controls.Add(this.hookshotSpeed);
-            this.panel_itemmods.Controls.Add(this.bowRadius);
-            this.panel_itemmods.Controls.Add(this.bowSpeed);
-            this.panel_itemmods.Location = new System.Drawing.Point(1098, 12);
+            this.panel_itemmods.Controls.Add(this.button_storage_doorcancel);
+            this.panel_itemmods.Controls.Add(this.button_storage_chest);
+            this.panel_itemmods.Controls.Add(this.button_storage_cancelstorage);
+            this.panel_itemmods.Controls.Add(this.button_storage_givestorage);
+            this.panel_itemmods.Location = new System.Drawing.Point(10, 536);
             this.panel_itemmods.Name = "panel_itemmods";
             this.panel_itemmods.Size = new System.Drawing.Size(1018, 207);
             this.panel_itemmods.TabIndex = 40;
+            // 
+            // button_storage_doorcancel
+            // 
+            this.button_storage_doorcancel.Location = new System.Drawing.Point(137, 48);
+            this.button_storage_doorcancel.Name = "button_storage_doorcancel";
+            this.button_storage_doorcancel.Size = new System.Drawing.Size(120, 23);
+            this.button_storage_doorcancel.TabIndex = 3;
+            this.button_storage_doorcancel.Text = "Give Door Cancel";
+            this.button_storage_doorcancel.UseVisualStyleBackColor = true;
+            this.button_storage_doorcancel.Visible = false;
+            this.button_storage_doorcancel.Click += new System.EventHandler(this.button_storage_doorcancel_Click);
+            // 
+            // button_storage_chest
+            // 
+            this.button_storage_chest.Location = new System.Drawing.Point(11, 48);
+            this.button_storage_chest.Name = "button_storage_chest";
+            this.button_storage_chest.Size = new System.Drawing.Size(120, 23);
+            this.button_storage_chest.TabIndex = 2;
+            this.button_storage_chest.Text = "Give Chest Storage";
+            this.button_storage_chest.UseVisualStyleBackColor = true;
+            this.button_storage_chest.Visible = false;
+            this.button_storage_chest.Click += new System.EventHandler(this.button_storage_chest_Click);
+            // 
+            // button_storage_cancelstorage
+            // 
+            this.button_storage_cancelstorage.Location = new System.Drawing.Point(137, 19);
+            this.button_storage_cancelstorage.Name = "button_storage_cancelstorage";
+            this.button_storage_cancelstorage.Size = new System.Drawing.Size(120, 23);
+            this.button_storage_cancelstorage.TabIndex = 1;
+            this.button_storage_cancelstorage.Text = "Cancel Storage";
+            this.button_storage_cancelstorage.UseVisualStyleBackColor = true;
+            this.button_storage_cancelstorage.Click += new System.EventHandler(this.button_storage_cancelstorage_Click);
+            // 
+            // button_storage_givestorage
+            // 
+            this.button_storage_givestorage.Location = new System.Drawing.Point(11, 19);
+            this.button_storage_givestorage.Name = "button_storage_givestorage";
+            this.button_storage_givestorage.Size = new System.Drawing.Size(120, 23);
+            this.button_storage_givestorage.TabIndex = 0;
+            this.button_storage_givestorage.Text = "Give Storage";
+            this.button_storage_givestorage.UseVisualStyleBackColor = true;
+            this.button_storage_givestorage.Click += new System.EventHandler(this.button_storage_givestorage_Click);
             // 
             // panel_coordinates
             // 
             this.panel_coordinates.Controls.Add(this.groupBox7);
             this.panel_coordinates.Controls.Add(this.groupBox6);
             this.panel_coordinates.Controls.Add(this.groupBox5);
-            this.panel_coordinates.Location = new System.Drawing.Point(797, 536);
+            this.panel_coordinates.Location = new System.Drawing.Point(1057, 13);
             this.panel_coordinates.Name = "panel_coordinates";
             this.panel_coordinates.Size = new System.Drawing.Size(1018, 207);
             this.panel_coordinates.TabIndex = 41;
@@ -2734,7 +2801,9 @@
             // 
             // panel_watchesmaster
             // 
+            this.panel_watchesmaster.Controls.Add(this.label5);
             this.panel_watchesmaster.Controls.Add(this.linkx);
+            this.panel_watchesmaster.Controls.Add(this.linkSpeedAngleLabel);
             this.panel_watchesmaster.Controls.Add(this.watch_groupBox);
             this.panel_watchesmaster.Controls.Add(this.linky);
             this.panel_watchesmaster.Controls.Add(this.readcoordinates);
@@ -2755,11 +2824,30 @@
             this.panel_watchesmaster.Size = new System.Drawing.Size(1018, 207);
             this.panel_watchesmaster.TabIndex = 44;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label5.Location = new System.Drawing.Point(134, 126);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 13);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "Speed Angle:";
+            // 
+            // linkSpeedAngleLabel
+            // 
+            this.linkSpeedAngleLabel.AutoSize = true;
+            this.linkSpeedAngleLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.linkSpeedAngleLabel.Location = new System.Drawing.Point(211, 126);
+            this.linkSpeedAngleLabel.Name = "linkSpeedAngleLabel";
+            this.linkSpeedAngleLabel.Size = new System.Drawing.Size(0, 13);
+            this.linkSpeedAngleLabel.TabIndex = 48;
+            // 
             // panel_debug
             // 
             this.panel_debug.Controls.Add(this.groupBox3);
             this.panel_debug.Controls.Add(this.groupBox2);
-            this.panel_debug.Location = new System.Drawing.Point(1083, 758);
+            this.panel_debug.Location = new System.Drawing.Point(666, 808);
             this.panel_debug.Name = "panel_debug";
             this.panel_debug.Size = new System.Drawing.Size(1018, 207);
             this.panel_debug.TabIndex = 45;
@@ -2794,6 +2882,7 @@
             this.Controls.Add(this.panel_coordinates);
             this.Controls.Add(this.panel_spoof);
             this.Controls.Add(this.panel_itemmods);
+            this.Controls.Add(this.cheatTab);
             this.Controls.Add(this.panel_inventory);
             this.Controls.Add(this.panel_link);
             this.Controls.Add(this.panel_gecko);
@@ -2810,7 +2899,6 @@
             this.Controls.Add(this.label_connection);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.cheatTab);
             this.Controls.Add(this.button_codes);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -2819,7 +2907,7 @@
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DoomZoom Trainer v.1.1.1 DEV";
+            this.Text = "DoomZoom Trainer v.1.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox1.ResumeLayout(false);
@@ -2855,7 +2943,6 @@
             this.panel_inventory.ResumeLayout(false);
             this.panel_inventory.PerformLayout();
             this.panel_itemmods.ResumeLayout(false);
-            this.panel_itemmods.PerformLayout();
             this.panel_coordinates.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -3090,6 +3177,13 @@
         private System.Windows.Forms.TextBox textBox_coordinates_angle;
         private System.Windows.Forms.TextBox textBox_coordinates_z;
         private System.Windows.Forms.Button button_coordinates_loadCurrentCoords;
+        private System.Windows.Forms.Button button_storage_cancelstorage;
+        private System.Windows.Forms.Button button_storage_givestorage;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label linkSpeedAngleLabel;
+        private System.Windows.Forms.Button button_storage_doorcancel;
+        private System.Windows.Forms.Button button_storage_chest;
+        private System.Windows.Forms.CheckBox checkBox_link_invis;
     }
 }
 

@@ -15,7 +15,7 @@ namespace WindWakerHD_Rewrite
 {
     public partial class Main : Form
     {
-        private protected string version = "1.1.1";
+        private protected string version = "1.2.0";
         private const uint CodeHandlerStart = 0x01133000;
         private const uint CodeHandlerEnd = 0x01134300;
         private const uint CodeHandlerEnabled = 0x10014CFC;
@@ -75,6 +75,24 @@ namespace WindWakerHD_Rewrite
             panel_watchesmaster.Hide();
             panel_debug.Hide();
             panel_credits.Hide();
+
+            //Auto Updater
+            String versionURL = Program.GetFinalRedirect("https://github.com/JakeButf/DoomZoom/releases/latest");
+            int pos = versionURL.LastIndexOf('/');
+            String latestVersion = "";
+            if (pos > -1)
+            {
+                latestVersion = versionURL.Substring(pos + 1);
+            }
+            if(latestVersion != version)
+            {
+                //Out of date
+                if(MessageBox.Show("A new version of the trainer is out, would you like to download the new version?", "Version Out of Date", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/JakeButf/DoomZoom/releases/latest");
+                    this.Close();
+                }
+            }
         }
 
         #region UI Controls
@@ -459,6 +477,10 @@ namespace WindWakerHD_Rewrite
             if (inventoryBox.Text == "Hero's Charm")
                 Gecko.poke08(0x15073738, 0x00);
         }
+        private void button_inventory_getMapScreen_Click(object sender, EventArgs e)
+        {
+        }
+
 
         private async void bottle1_Click(object sender, EventArgs e)
         {
@@ -546,6 +568,27 @@ namespace WindWakerHD_Rewrite
                 wiiuconnect.PerformClick();
                 MessageBox.Show("Disconnected due to a connection loss");
             }
+        }
+        #endregion
+        #region Storage Tab
+        private void button_storage_givestorage_Click(object sender, EventArgs e) //Give Storage
+        {
+            Gecko.poke32(0x10976543, 1);
+        }
+
+        private void button_storage_cancelstorage_Click(object sender, EventArgs e)
+        {
+            Gecko.poke32(0x10976543, 0);
+        }
+        private void button_storage_chest_Click(object sender, EventArgs e)
+        {
+            Gecko.poke08(0x10989C76 + 0x836, 0);
+            Gecko.poke08(0x10989C76 + 0x837, 4);
+        }
+
+        private void button_storage_doorcancel_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
 
@@ -678,12 +721,14 @@ namespace WindWakerHD_Rewrite
                 byte[] linkybytes = BitConverter.GetBytes(Gecko.peek(0x1096EF4C));
                 byte[] linkzbytes = BitConverter.GetBytes(Gecko.peek(0x1096EF50));
                 byte[] linkspeedbytes = BitConverter.GetBytes(Gecko.peek(speed + 0x00006938));
+                byte[] linkspeedanglebytes = BitConverter.GetBytes(Gecko.peek(0x1096EF0A));
                 byte[] boatxbytes = BitConverter.GetBytes(Gecko.peek(0x48723EC4));
                 byte[] boatybytes = BitConverter.GetBytes(Gecko.peek(0x48723EC8));
                 byte[] boatzbytes = BitConverter.GetBytes(Gecko.peek(0x48723ECC));
                 float LinkX = BitConverter.ToSingle(linkxbytes, 0);
                 float LinkY = BitConverter.ToSingle(linkybytes, 0);
                 float LinkZ = BitConverter.ToSingle(linkzbytes, 0);
+                float LinkSpeedAngle = BitConverter.ToSingle(linkspeedanglebytes, 0);
                 float LinkSpeed = BitConverter.ToSingle(linkspeedbytes, 0);
                 float BoatX = BitConverter.ToSingle(boatxbytes, 0);
                 float BoatY = BitConverter.ToSingle(boatybytes, 0);
@@ -692,6 +737,7 @@ namespace WindWakerHD_Rewrite
                 linky.Text = LinkY.ToString();
                 linkz.Text = LinkZ.ToString();
                 linkspeed.Text = LinkSpeed.ToString();
+                linkSpeedAngleLabel.Text = LinkSpeedAngle.ToString();
                 boatx.Text = BoatX.ToString();
                 boaty.Text = BoatY.ToString();
                 boatz.Text = BoatZ.ToString();
@@ -915,6 +961,11 @@ namespace WindWakerHD_Rewrite
         private uint finalArrows;
         private uint finalBombs;
         private bool memfileDpadControls;
+        private List<UInt32> savedInventory;
+        private List<UInt32> savedSceneFlags;
+        private List<UInt32> savedGlobalFlags;
+
+        private List<UInt32> memRange;
 
         private string folderPath;
 
@@ -931,7 +982,6 @@ namespace WindWakerHD_Rewrite
         //SAVE MEMFILE
         private void button1_Click(object sender, EventArgs e)
         {
-            //memfile_save_fbd.Title = "Save Memfile";
             savedMap = label_memfile_stage.Text;
             coordx = Gecko.peek(0x1096EF48);
             coordy = Gecko.peek(0x1096EF4C);
@@ -941,13 +991,17 @@ namespace WindWakerHD_Rewrite
             maptimer.Stop();
             finalRoom = returnRoom();
             finalSpawn = returnSpawn();
-            //COORDS
-            
+
             finalHealth = returnHealth();
             finalMagic = Gecko.peek(0x15073694);
             finalRupees = Gecko.peek(0x15073684);
             finalArrows = Gecko.peek(0x150736E9);
-            finalBombs = Gecko.peek(0x150736EA);      
+            finalBombs = Gecko.peek(0x150736EA);
+
+            savedInventory = GetInventory();
+
+            savedSceneFlags = ReturnSceneFlagValues();
+            savedGlobalFlags = ReturnGlobalFlagValues();
         }
         private void button_memfile_export_Click(object sender, EventArgs e)
         {
@@ -972,6 +1026,23 @@ namespace WindWakerHD_Rewrite
                     writer.WriteLine(finalRupees);
                     writer.WriteLine(finalArrows);
                     writer.WriteLine(finalBombs);
+
+                    writer.WriteLine("SCENE FLAGS");
+
+                    foreach (UInt32 i in savedSceneFlags) //Write Scene Flags
+                    {
+                        writer.WriteLine(i);
+                    }
+                    writer.WriteLine("GLOBAL FLAGS");
+                    foreach (UInt32 i in savedGlobalFlags) //Write Global Flags
+                    {
+                        writer.WriteLine(i);
+                    }
+                    writer.WriteLine("INVENTORY");
+                    foreach(UInt32 i in savedInventory)
+                    {
+                        writer.WriteLine(i);
+                    }
 
                     writer.Close();
                     writer.Dispose();
@@ -1002,6 +1073,25 @@ namespace WindWakerHD_Rewrite
                 finalRupees = Convert.ToUInt32(lines[10]);
                 finalArrows = Convert.ToUInt32(lines[11]);
                 finalBombs = Convert.ToUInt32(lines[12]);
+
+                List<UInt32> tempSceneFlagList = new List<UInt32>();
+                for(int i = 14;  i < 46; i++)
+                {
+                    tempSceneFlagList.Add(Convert.ToUInt32(lines[i]));
+                }
+                savedSceneFlags = tempSceneFlagList;
+                List<UInt32> tempGlobalFlagList = new List<UInt32>();
+                for (int i = 48; i < 111; i++)
+                {
+                    tempGlobalFlagList.Add(Convert.ToUInt32(lines[i]));
+                }
+
+                List<UInt32> tempInventoryList = new List<UInt32>();
+                for(int i = 113; i < 133; i++)
+                {
+                    tempInventoryList.Add(Convert.ToUInt32(lines[i]));
+                }
+                savedGlobalFlags = tempGlobalFlagList;
                 textBox_memfile_name.Text = System.IO.Path.GetFileNameWithoutExtension(memfile_open_ofd.FileName);
             }      
         }
@@ -1016,34 +1106,25 @@ namespace WindWakerHD_Rewrite
             if (validateMap(savedMap))
             {
                 LoadHealth();
-                Gecko.poke32(0x15073694, finalMagic);
-                Gecko.poke32(0x15073684, finalRupees);
-                Gecko.poke32(0x150736E9, finalArrows);
-                Gecko.poke32(0x150736EA, finalBombs);
-                if(savedMap == "M_NewD2" || savedMap == "kindan" || savedMap == "Siren" || savedMap == "M_Dai" || savedMap == "kaze") //if in dungeon, load test room first to prevent teleporting to entrance
-                {
-                    Console.WriteLine("Saved in dungeon");
-                    Gecko.poke32(0x109763F0, 0x00000000); //Clearing Stage name to prevent Crash
-                    Gecko.poke32(0x109763F4, 0x00000000); //Clearing Stage name to prevent Crash
-                    Gecko.poke32(0x109763F0, 0x4533524F);
-                    Gecko.poke32(0x109763F4, 0x4F500000);
-                    Console.WriteLine(finalRoom + "Final Room");
-                    Gecko.poke08(0x109763F9, 0); //Spawn ID
-                    Gecko.poke08(0x109763FA, 0); //Room ID
-                    Gecko.poke08(0x109763FB, 0); //Layer ID
-                    Gecko.poke08(0x109763FC, 0x01); //Reload Stage
-                }
+                Gecko.poke32(0x15073694, finalMagic); //Magic
+                Gecko.poke32(0x15073684, finalRupees); //Rupees
+                Gecko.poke32(0x150736E9, finalArrows); //Arrows
+                Gecko.poke32(0x150736EA, finalBombs); //Bombs
+                SetInventory(savedInventory); //Inventory
                 var readmap = await Map.SetMap(savedMap);
                 Gecko.poke32(0x109763F0, 0x00000000); //Clearing Stage name to prevent Crash
                 Gecko.poke32(0x109763F4, 0x00000000); //Clearing Stage name to prevent Crash
-                Gecko.poke32(0x109763F0, readmap[0]);
+                Gecko.poke32(0x109763F0, readmap[0]); //Stage Name
                 Gecko.poke32(0x109763F4, readmap[1]);
                 Console.WriteLine(finalRoom + "Final Room");
                 Gecko.poke08(0x109763F9, Convert.ToByte(finalSpawn)); //Spawn ID
                 Gecko.poke08(0x109763FA, Convert.ToByte(finalRoom)); //Room ID
                 Gecko.poke08(0x109763FB, Convert.ToByte(0)); //Layer ID
                 Gecko.poke08(0x109763FC, 0x01); //Reload Stage
-                Thread.Sleep(3500);
+                WriteSceneFlags(savedSceneFlags); //Scene Flags
+                WriteGlobalFlags(savedGlobalFlags); //Global Flags
+                Gecko.poke08(0x109763FC, 0x01); //Reload Stage to Apply Flags
+                Thread.Sleep(4500);
                 //TP TO COORDS
                 LoadCoords();
             }
@@ -1108,6 +1189,89 @@ namespace WindWakerHD_Rewrite
         {
             //maptimer.Start();
         }
+
+        private List<UInt32> ReturnSceneFlagValues()
+        {
+            List<UInt32> returnList = new List<UInt32>();
+
+            for(uint i = 0x15073DF8; i < 0x15073E18 + 1; i++)
+            {
+                returnList.Add(Gecko.peek(i));
+            }
+
+            return returnList;
+        }
+
+        private List<UInt32> ReturnGlobalFlagValues()
+        {
+            List<UInt32> returnList = new List<UInt32>();
+
+            for (uint i = 0x15073CA4; i < 0x15073CE3 + 1; i++)
+            {
+                returnList.Add(Gecko.peek(i));
+            }
+
+            return returnList;
+        }
+
+        private void WriteSceneFlags(List<UInt32> flags)
+        {
+            for (uint i = 0x15073DF8, x = 0; i < 0x15073E18 + 1; i++, x++)
+            {
+                Gecko.poke32(i, flags[Convert.ToInt32(x)]);
+            }
+        }
+
+        private void WriteGlobalFlags(List<UInt32> flags)
+        {
+            for (uint i = 0x15073CA4, x = 0; i < 0x15073CE3 + 1; i++, x++)
+            {
+                Gecko.poke32(i, flags[Convert.ToInt32(x)]);
+            }
+        }
+        List<UInt32> InventoryAddresses = new List<UInt32>
+        {
+            0x150736BC,//telescope
+            0x150736BE,//wind waker
+            0x150736BF,//grappling hook
+            0x150736C4,//deluxe picto
+            0x150736C5,//iron boots
+            0x150736CF,//hookshot
+            0x150736C9,//bombs
+            0x150736D0,//skull hammer
+            0x150736C8,//bow
+            0x150736C6,//magic armor
+            0x150736C1,//boomerang
+            0x150736C2,//leaf
+            0x150736C7,//bait bag
+            0x150736CE,//delivery bag
+            0x150736C0,//spoils bag
+            0x1507368E,//sword
+            0x1507368F,//shield
+            0x15073738,//heros charm
+            0x150736C3,//tingle bottle
+            0x15073690 //power bracelets
+        };
+        private List<UInt32> GetInventory()
+        {
+            List<UInt32> returnList = new List<UInt32>();
+
+            foreach(UInt32 i in InventoryAddresses)
+            {
+                returnList.Add(Gecko.peek(i));
+            }
+
+            return returnList;
+        }
+
+        private void SetInventory(List<UInt32> inventory)
+        {
+            for(int i = 0; i < InventoryAddresses.Count; i++)
+            {
+                Gecko.poke32(InventoryAddresses[i], inventory[i]);
+            }
+        }
+
 
         private void stageloaderPage_Leave(object sender, EventArgs e)
         {
@@ -1281,6 +1445,17 @@ namespace WindWakerHD_Rewrite
             {
                 color = 0;
             }
+
+            if(Gecko.peek(0x109763F0) == 0x7365615F)
+            {
+                Gecko.poke32(0x150736A4, 0xFFFFFFFF);
+            }
+
+            if(checkBox_link_invis.Checked)
+            {
+                Gecko.poke32(0x10989C76, 0);
+            }
+
             Gecko.poke32(0x26917418, color);
             if(dpaddown)
             {
@@ -1291,7 +1466,9 @@ namespace WindWakerHD_Rewrite
             if(memfileDpadControls)
             {
                 if (gameInput.IsDpadLeftDown(Gecko))
+                {
                     button1_Click(new object(), new EventArgs());
+                }
                 else if (gameInput.IsDpadRightDown(Gecko))
                     loadMemfile();
             }
@@ -1367,6 +1544,9 @@ namespace WindWakerHD_Rewrite
             g.DrawRectangle(p, this.cheatTab.Bounds);
         }
 
-        
+        private void checkBox_link_invis_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }      
     }
 } 
