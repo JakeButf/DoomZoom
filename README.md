@@ -1,5 +1,5 @@
 # DoomZoom Trainer
-![](https://i.imgur.com/ngcel0n.png)
+![](https://i.imgur.com/VDmXvay.png)
 A fork of [Dekirais trainer](https://github.com/Dekirai/WindWakerHDTrainer).
 ![](https://i.imgur.com/DKvZrvX.png)
 # Credits for codes used:
