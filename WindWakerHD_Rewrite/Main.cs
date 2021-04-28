@@ -1446,10 +1446,10 @@ namespace WindWakerHD_Rewrite
                 color = 0;
             }
 
-            if(Gecko.peek(0x109763F0) == 0x7365615F)
+            /*if(Gecko.peek(0x109763F0) == 0x7365615F)
             {
                 Gecko.poke32(0x150736A4, 0xFFFFFFFF);
-            }
+            }*/
 
             if(checkBox_link_invis.Checked)
             {
