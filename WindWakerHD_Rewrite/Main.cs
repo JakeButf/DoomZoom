@@ -15,7 +15,7 @@ namespace WindWakerHD_Rewrite
 {
     public partial class Main : Form
     {
-        private protected string version = "1.2.0";
+        private protected string version = "1.3.0";
         private const uint CodeHandlerStart = 0x01133000;
         private const uint CodeHandlerEnd = 0x01134300;
         private const uint CodeHandlerEnabled = 0x10014CFC;
@@ -553,7 +553,6 @@ namespace WindWakerHD_Rewrite
                 }
 
                 uint roomid = Gecko.peek(0x109763F9) >> ((~0x109763F9 & 2) * 4) & 0xff;
-                Console.WriteLine(roomid + "roomid");
                 uint spawnid = Gecko.peek(0x109763F9) >> ((~0x109763F9 & 4) * 4) & 0xff;
                 uint layerid = Gecko.peek(0x109763F9) >> ((~0x109763F9 & 0) * 4) & 0xff;
                 label_memfile_stage.Text = mapname + mapname2;
@@ -703,6 +702,13 @@ namespace WindWakerHD_Rewrite
         #endregion
 
         #region Coordinates Tab
+        //Custom Watches Hit
+        private void button_customWatches_Click(object sender, EventArgs e)
+        {
+            WatchForm watch = new WatchForm();
+            watch.SetGecko(Gecko);
+            watch.Show();
+        }
         private void readcoordinates_CheckedChanged(object sender, EventArgs e)
         {
             if (readcoordinates.Checked)
@@ -1103,7 +1109,7 @@ namespace WindWakerHD_Rewrite
 
         private async void loadMemfile()
         {
-            if (validateMap(savedMap))
+            if (validateMap(savedMap) && Convert.ToUInt32(Gecko.peek(0x15073683)) > 0)
             {
                 LoadHealth();
                 Gecko.poke32(0x15073694, finalMagic); //Magic
@@ -1124,9 +1130,24 @@ namespace WindWakerHD_Rewrite
                 WriteSceneFlags(savedSceneFlags); //Scene Flags
                 WriteGlobalFlags(savedGlobalFlags); //Global Flags
                 Gecko.poke08(0x109763FC, 0x01); //Reload Stage to Apply Flags
-                Thread.Sleep(4500);
-                //TP TO COORDS
-                LoadCoords();
+                //Thread.Sleep(4500);
+                bool test = false;
+                Thread.Sleep(2000);
+                while (!test)
+                {
+                    if (Convert.ToUInt32(Gecko.peek(0x109763FC)) < 1000000 && Convert.ToUInt32(Gecko.peek(0x10976542)) == 0 && Gecko.peek(0x10976598) == 0xFFFFFFFF)
+                    {
+                        test = true;
+                    }
+                }
+                
+                if(Gecko.peek(0x109763E4) == Gecko.peek(0x109763F0))//Check if a loading transition is in progress (prevents crash)
+                {
+                    Gecko.poke32(0x10976543, 1);
+                    LoadCoords();//TP TO COORDS
+                    Gecko.poke32(0x10976543, 0);
+                }
+                    
             }
             else
             {
@@ -1547,6 +1568,8 @@ namespace WindWakerHD_Rewrite
         private void checkBox_link_invis_CheckedChanged(object sender, EventArgs e)
         {
 
-        }      
+        }
+
+        
     }
 } 

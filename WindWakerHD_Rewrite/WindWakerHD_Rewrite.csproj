@@ -82,6 +82,12 @@
     </Compile>
     <Compile Include="TCPConn.cs" />
     <Compile Include="TCPGecko.cs" />
+    <Compile Include="WatchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WatchForm.Designer.cs">
+      <DependentUpon>WatchForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +103,9 @@
     </Compile>
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WatchForm.resx">
+      <DependentUpon>WatchForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

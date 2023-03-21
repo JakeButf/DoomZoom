@@ -249,6 +249,7 @@
             this.linkSpeedAngleLabel = new System.Windows.Forms.Label();
             this.panel_debug = new System.Windows.Forms.Panel();
             this.panel_credits = new System.Windows.Forms.Panel();
+            this.button_customWatches = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.cheatTab.SuspendLayout();
             this.itemspoofPage.SuspendLayout();
@@ -2801,6 +2802,7 @@
             // 
             // panel_watchesmaster
             // 
+            this.panel_watchesmaster.Controls.Add(this.button_customWatches);
             this.panel_watchesmaster.Controls.Add(this.label5);
             this.panel_watchesmaster.Controls.Add(this.linkx);
             this.panel_watchesmaster.Controls.Add(this.linkSpeedAngleLabel);
@@ -2868,12 +2870,22 @@
             this.panel_credits.Size = new System.Drawing.Size(1018, 206);
             this.panel_credits.TabIndex = 46;
             // 
+            // button_customWatches
+            // 
+            this.button_customWatches.Location = new System.Drawing.Point(100, 14);
+            this.button_customWatches.Name = "button_customWatches";
+            this.button_customWatches.Size = new System.Drawing.Size(157, 23);
+            this.button_customWatches.TabIndex = 49;
+            this.button_customWatches.Text = "Launch Custom Watches";
+            this.button_customWatches.UseVisualStyleBackColor = true;
+            this.button_customWatches.Click += new System.EventHandler(this.button_customWatches_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(19)))));
-            this.ClientSize = new System.Drawing.Size(1016, 323);
+            this.ClientSize = new System.Drawing.Size(1015, 324);
             this.Controls.Add(this.panel_credits);
             this.Controls.Add(this.panel_debug);
             this.Controls.Add(this.panel_watchesmaster);
@@ -2907,7 +2919,7 @@
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DoomZoom Trainer v.1.2";
+            this.Text = "DoomZoom Trainer v.1.3.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox1.ResumeLayout(false);
@@ -3184,6 +3196,7 @@
         private System.Windows.Forms.Button button_storage_doorcancel;
         private System.Windows.Forms.Button button_storage_chest;
         private System.Windows.Forms.CheckBox checkBox_link_invis;
+        private System.Windows.Forms.Button button_customWatches;
     }
 }
 

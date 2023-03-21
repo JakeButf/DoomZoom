@@ -1,0 +1,15 @@
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WindWakerHD_Rewrite.csprojAssemblyReference.cache
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WindWakerHD_Rewrite.Main.resources
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WindWakerHD_Rewrite.Properties.Resources.resources
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WindWakerHD_Rewrite.Splash.resources
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WindWakerHD_Rewrite.csproj.GenerateResource.cache
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WindWakerHD_Rewrite.csproj.CoreCompileInputs.cache
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WWHD Trainer.exe
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WWHD Trainer.pdb
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\bin\Release\WWHD Trainer.exe.config
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\bin\Release\WWHD Trainer.exe
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\bin\Release\WWHD Trainer.pdb
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\bin\Release\MadMilkman.Ini.xml
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WindWakerHD_Rewrite.csproj.Fody.CopyLocal.cache
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WindWakerHD_Rewrite.csproj.CopyComplete
+D:\ProgrammingFiles\DoomZoom-main\WindWakerHD_Rewrite\obj\Release\WindWakerHD_Rewrite.WatchForm.resources
